@@ -1,0 +1,261 @@
+# Relic Relapse: records for the pills and the relapse effects.
+# Visuals reuse the game's own relic sickness effects, cloned under our own IDs so this mod
+# never removes an effect a quest applied.
+
+# --- Pseudoendotrizine (the pills) ---------------------------------------------------------
+
+RelicRelapse.ConsumableBaseName:
+  $type: gamedataConsumableBaseName_Record
+  enumName: RelicRelapsePseudoendotrizine
+
+UIIcon.relic_relapse_pills:
+  $type: gamedataUIIcon_Record
+  atlasPartName: johnny_pills
+  atlasResourcePath: base\gameplay\gui\common\icons\mappin_icons.inkatlas
+
+RelicRelapse.PillPrice:
+  $type: gamedataConstantStatModifier_Record
+  value: 400
+  modifierType: Additive
+  statType: BaseStats.Price
+
+RelicRelapse.PillWeight:
+  $type: gamedataConstantStatModifier_Record
+  value: 0
+  modifierType: Additive
+  statType: BaseStats.Weight
+
+RelicRelapse.PillAction:
+  $type: gamedataItemAction_Record
+  isDefaultLootChoice: False
+  removeAfterUse: True
+  actionName: Consume
+  hackCategory: HackCategory.NotAHack
+  objectActionType: ObjectActionType.Item
+  priority: 0
+  activationTime: []
+  completionEffects: []
+  costs: []
+  durationTime: []
+  instigatorActivePrereqs: []
+  instigatorPrereqs: []
+  interruptionPrereqs: []
+  rewards: []
+  startEffects: []
+  targetActivePrereqs: []
+  targetPrereqs: []
+
+RelicRelapse.Pseudoendotrizine:
+  $type: gamedataConsumableItem_Record
+  consumableBaseName: RelicRelapse.ConsumableBaseName
+  consumableType: ConsumableType.Drug
+  animFeatureName: ItemData
+  animName: ui_garment_pose
+  animSetResource: ''
+  appearanceName: base_junk_item_medicine_bottle
+  canDrop: True
+  crosshair: Crosshairs.None
+  deprecated: False
+  dropObject: defaultItemDrop
+  enableNpcRPGData: False
+  entityName: base_junk_item
+  equipArea: EquipmentArea.Consumable
+  friendlyName: ''
+  garmentOffset: 0
+  icon: UIIcon.ItemIcon
+  iconPath: relic_relapse_pills
+  isCached: False
+  isCoreCW: False
+  isCustomizable: False
+  isGarment: False
+  isPart: False
+  isSingleInstance: False
+  itemCategory: ItemCategory.Consumable
+  itemSecondaryAction: ItemAction.Consume
+  itemType: ItemType.Con_LongLasting
+  localizedName: ''
+  mass: 1
+  minigameInstance: minigame_v2.DefaultItemMinigame
+  powerLevelDeterminedByParent: False
+  quality: Quality.Rare
+  qualityRestrictedByParent: False
+  replicateWhenNotActive: False
+  upgradeCostMult: 1
+  useHeadgearGarmentAggregator: False
+  useNewSpawnMethod: False
+  usesVariants: False
+  savable: False
+  animationParameters: []
+  appearanceSuffixes: []
+  appearanceSuffixesOwnerOverride: []
+  attachmentSlots: []
+  buyPrice:
+    - RelicRelapse.PillPrice
+    - Price.BuyPrice_StreetCred_Discount
+  cameraForward: {x: 0, y: 0, z: 0}
+  cameraUp: {x: 0, y: 0, z: 0}
+  connections: []
+  displayName: l"RelicRelapse-Item-Name"
+  equipAreas: []
+  equipPrereqs: []
+  gameplayRestrictions: []
+  hairSkinnedMeshComponents: []
+  localizedDescription: l"RelicRelapse-Item-Desc"
+  OnAttach: []
+  OnEquip: []
+  OnLooted: []
+  parts: []
+  placementSlots:
+    - AttachmentSlots.WeaponLeft
+  previewBBoxOverride: []
+  requiredSlots: []
+  sellPrice:
+    - RelicRelapse.PillPrice
+    - Price.SellMultiplier
+  slotPartList: []
+  slotPartListPreset: []
+  tags:
+    - Preload
+    - HasModel
+    - Consumable
+    - Drug
+    - Medical
+    - RelicRelapseDose
+  variants: []
+  visualTags: []
+  effectors: []
+  objectActions:
+    - RelicRelapse.PillAction
+    - ItemAction.Drop
+  statModifierGroups: []
+  statModifiers:
+    - RelicRelapse.PillWeight
+  statPools: []
+  weakspots: []
+
+# --- Effects ---------------------------------------------------------------------------------
+
+# Screen distortion, breathing and sound: the game's own relic sickness, under our IDs.
+RelicRelapse.WarningFX:
+  $base: BaseStatusEffect.JohnnySicknessMedium
+
+RelicRelapse.AttackFX:
+  $base: BaseStatusEffect.JohnnySicknessHeavy
+
+RelicRelapse.NoCyberware:
+  $base: GameplayRestriction.NoCyberware
+
+RelicRelapse.NoSprint:
+  $type: gamedataConstantStatModifier_Record
+  statType: BaseStats.CanSprint
+  modifierType: Multiplier
+  value: 0
+
+RelicRelapse.NoDodge:
+  $type: gamedataConstantStatModifier_Record
+  statType: BaseStats.HasDodge
+  modifierType: Multiplier
+  value: 0
+
+RelicRelapse.WarningSlow:
+  $type: gamedataConstantStatModifier_Record
+  statType: BaseStats.MaxSpeed
+  modifierType: Multiplier
+  value: 0.85
+
+RelicRelapse.AttackSlow:
+  $type: gamedataConstantStatModifier_Record
+  statType: BaseStats.MaxSpeed
+  modifierType: Multiplier
+  value: 0.6
+
+RelicRelapse.WarningPackage:
+  $type: gamedataGameplayLogicPackage_Record
+  stackable: False
+  animationWrapperOverrides: []
+  effectors: []
+  items: []
+  statPools: []
+  stats:
+    - RelicRelapse.NoSprint
+    - RelicRelapse.WarningSlow
+
+RelicRelapse.AttackPackage:
+  $type: gamedataGameplayLogicPackage_Record
+  stackable: False
+  animationWrapperOverrides: []
+  effectors: []
+  items: []
+  statPools: []
+  stats:
+    - RelicRelapse.NoSprint
+    - RelicRelapse.NoDodge
+    - RelicRelapse.AttackSlow
+
+RelicRelapse.WarningUI:
+  $type: gamedataStatusEffectUIData_Record
+  displayName: l"RelicRelapse-Effect-Warning"
+  description: l"RelicRelapse-Effect-Warning-Desc"
+  fluffText: ''
+  iconPath: johnny_sickness_icon
+  priority: -10
+  floatValues: []
+  intValues: []
+  nameValues: []
+  stats: []
+
+RelicRelapse.AttackUI:
+  $type: gamedataStatusEffectUIData_Record
+  displayName: l"RelicRelapse-Effect-Attack"
+  description: l"RelicRelapse-Effect-Attack-Desc"
+  fluffText: ''
+  iconPath: johnny_sickness_icon
+  priority: -10
+  floatValues: []
+  intValues: []
+  nameValues: []
+  stats: []
+
+RelicRelapse.ProtectedUI:
+  $type: gamedataStatusEffectUIData_Record
+  displayName: l"RelicRelapse-Effect-Protected"
+  description: l"RelicRelapse-Effect-Protected-Desc"
+  fluffText: ''
+  iconPath: johnny_sickness_icon
+  priority: -10
+  floatValues: []
+  intValues: []
+  nameValues: []
+  stats: []
+
+RelicRelapse.Warning:
+  $base: BaseStatusEffect.JohnnySicknessLow
+  VFX: []
+  SFX: []
+  gameplayTags:
+    - Debuff
+    - RelicRelapse
+  uiData: RelicRelapse.WarningUI
+  packages:
+    - RelicRelapse.WarningPackage
+
+RelicRelapse.Attack:
+  $base: BaseStatusEffect.JohnnySicknessLow
+  VFX: []
+  SFX: []
+  gameplayTags:
+    - Debuff
+    - RelicRelapse
+  uiData: RelicRelapse.AttackUI
+  packages:
+    - RelicRelapse.AttackPackage
+
+RelicRelapse.Protected:
+  $base: BaseStatusEffect.JohnnySicknessLow
+  VFX: []
+  SFX: []
+  gameplayTags:
+    - Buff
+    - RelicRelapse
+  uiData: RelicRelapse.ProtectedUI
+  packages: []
