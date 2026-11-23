@@ -2,7 +2,7 @@
 //
 // Far Cry 2's malaria, for the Relic. After Playing for Time the Relic relapses on an in-game
 // clock that tightens as the main story moves on. A relapse starts with a warning (glitching,
-// laboured breathing, no sprinting); take a dose of pseudoendotrizine during it and it passes.
+// laboured breathing, no sprinting); take an Omega blocker during it and it passes.
 // Miss it and the attack hits: heavy distortion, max health cut, slowed, cyberware offline.
 // Pills are scarce: Vik sells a few a week from his ripperdoc screen, and finished gigs
 // sometimes come with a dose. Everything is tunable on the Mod Settings page.
@@ -374,12 +374,12 @@ public class RRSystem extends ScriptableSystem {
         if !IsDefined(this.m_player) {
             return 0;
         }
-        return GameInstance.GetTransactionSystem(this.GetGameInstance()).GetItemQuantity(this.m_player, ItemID.FromTDBID(t"RelicRelapse.Pseudoendotrizine"));
+        return GameInstance.GetTransactionSystem(this.GetGameInstance()).GetItemQuantity(this.m_player, ItemID.FromTDBID(t"RelicRelapse.OmegaBlockers"));
     }
 
     private func GiveDoses(n: Int32) -> Void {
         if n > 0 && IsDefined(this.m_player) {
-            GameInstance.GetTransactionSystem(this.GetGameInstance()).GiveItemByTDBID(this.m_player, t"RelicRelapse.Pseudoendotrizine", n);
+            GameInstance.GetTransactionSystem(this.GetGameInstance()).GiveItemByTDBID(this.m_player, t"RelicRelapse.OmegaBlockers", n);
         }
     }
 
@@ -523,7 +523,7 @@ public class RRVikPanel {
     public func Refresh() -> Void {
         let sys = this.System();
         let left = sys.VikStockLeft();
-        this.m_button.SetText(s"PSEUDOENDOTRIZINE  €$\(sys.VikPrice())  (\(left) LEFT THIS WEEK, \(sys.DosesHeld()) HELD)");
+        this.m_button.SetText(s"OMEGA BLOCKERS  €$\(sys.VikPrice())  (\(left) LEFT THIS WEEK, \(sys.DosesHeld()) HELD)");
         this.m_button.SetDisabled(left <= 0);
     }
 

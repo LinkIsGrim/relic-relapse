@@ -2,16 +2,11 @@
 # Visuals reuse the game's own relic sickness effects, cloned under our own IDs so this mod
 # never removes an effect a quest applied.
 
-# --- Pseudoendotrizine (the pills) ---------------------------------------------------------
+# --- Omega blockers (the pills) ---------------------------------------------------------
 
 RelicRelapse.ConsumableBaseName:
   $type: gamedataConsumableBaseName_Record
-  enumName: RelicRelapsePseudoendotrizine
-
-UIIcon.relic_relapse_pills:
-  $type: gamedataUIIcon_Record
-  atlasPartName: johnny_pills
-  atlasResourcePath: base\gameplay\gui\common\icons\mappin_icons.inkatlas
+  enumName: RelicRelapseOmegaBlockers
 
 RelicRelapse.PillPrice:
   $type: gamedataConstantStatModifier_Record
@@ -45,7 +40,7 @@ RelicRelapse.PillAction:
   targetActivePrereqs: []
   targetPrereqs: []
 
-RelicRelapse.Pseudoendotrizine:
+RelicRelapse.OmegaBlockers:
   $type: gamedataConsumableItem_Record
   consumableBaseName: RelicRelapse.ConsumableBaseName
   consumableType: ConsumableType.Drug
@@ -63,7 +58,7 @@ RelicRelapse.Pseudoendotrizine:
   friendlyName: ''
   garmentOffset: 0
   icon: UIIcon.ItemIcon
-  iconPath: relic_relapse_pills
+  iconPath: drugs_omage_blockers  # the game's Omega Blockers icon (CDPR's spelling)
   isCached: False
   isCoreCW: False
   isCustomizable: False

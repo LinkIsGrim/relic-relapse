@@ -2,7 +2,7 @@
 
 Far Cry 2's malaria, for the Relic.
 
-After **Playing for Time**, the Relic relapses on an in-game clock. A relapse starts with a warning: the screen glitches, V's breathing goes ragged, no sprinting. Take a dose of **pseudoendotrizine** during the warning and it passes. Miss it and the attack hits: heavy distortion, max health cut, slowed, no sprinting or dodging, and active cyberware (Sandevistan, Berserk, Kerenzikov, ...) offline. A dose ends an attack early too.
+After **Playing for Time**, the Relic relapses on an in-game clock. A relapse starts with a warning: the screen glitches, V's breathing goes ragged, no sprinting. Take an **Omega blocker** during the warning and it passes. Miss it and the attack hits: heavy distortion, max health cut, slowed, no sprinting or dodging, and active cyberware (Sandevistan, Berserk, Kerenzikov, ...) offline. A dose ends an attack early too.
 
 The pills are the economy. You get a couple from Vik to start, Vik sells a few a week from his ripperdoc screen, and finished gigs sometimes come with a dose. Run out in the middle of a firefight and you'll feel it.
 
